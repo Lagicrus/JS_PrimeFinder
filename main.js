@@ -1,20 +1,13 @@
 var primeCount = 0
 
 function primeChecker(number){
-  if (number % 2 != 0){
-      var prime = false;
-      for (var numberInNumber = 2; numberInNumber < number; numberInNumber++){
-        if (number % numberInNumber == 0 && numberInNumber != number){
-            prime = true;
-          }
-        }
-      if (prime == false){
-        primeCount += 1;
-        console.log(primeCount + " " + number + " is a prime");
-      }
-    }
+  for (var numberInNumber = 3; numberInNumber < number - 1; numberInNumber+=2){
+     if(!(number % numberInNumber == 0))
+      return true;
   }
-
-for (var genNumber = 0; genNumber < 10000; genNumber++) {
-  primeChecker(genNumber);
+  return false
+}
+for (var genNumber = 1; genNumber < 10000; genNumber+=2) {
+  if(primeChecker(genNumber)) 
+    console.log(primeCount++ + " " + number + " is a prime");
 }
